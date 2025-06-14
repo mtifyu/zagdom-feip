@@ -1,23 +1,23 @@
 <template>
     <div class="footer">
         <div class="footer-ul">
-            <img src="/public/pictures/logo2.png" alt="logo">
-            <ul class="nav1">
-                <li v-for="item in nav" :key="item.url">
-                    <a :href="item.url">
-                    {{ item.label }}
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav2">
-                <li v-for="item in nav2" :key="item.url">
-                    <img :src="item.icon" alt="icon">
-                    <a :href="item.url">
-                        {{ item.label}}
-                    </a>
-                </li>
-            </ul>
-            <button class="f-button">Оставить заявку</button>
+          <img src="/public/pictures/logo2.png" alt="logo">
+          <ul class="nav1">
+              <li v-for="item in nav" :key="item.url">
+                  <a :href="item.url">
+                  {{ item.label }}
+                  </a>
+              </li>
+          </ul>
+          <ul class="nav2">
+              <li v-for="item in nav2" :key="item.url">
+                  <img :src="item.icon" alt="icon">
+                  <a :href="item.url">
+                      {{ item.label}}
+                  </a>
+              </li>
+          </ul>
+          <button class="f-button">Оставить заявку</button>
         </div>
         <div>
             <ul class="horizontal-list">
@@ -65,7 +65,7 @@ const nav2 = ref([
   {
     url: 'https://www.google.com/maps/dir/?api=1&destination=55.751244 ,37.618423',
     icon: Point,
-    label:`Владивосток
+    label:`г. Владивосток
       ул. Выселковая 49, стр.3
     `,
   },
@@ -83,24 +83,26 @@ const nav3 = ref([
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
 .footer {
   width: 100%;
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(37, 71, 65);;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(37, 71, 65);
 }
 .footer-ul{
-    display: flex;
-    flex-direction: row;
-    gap: 122px;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-top: 31.5px;
-    padding: 0 88px; /* Вместо margin-left — добавляем padding слева и справа */
-    box-sizing: border-box; /* Важно для корректной работы padding */
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 31.5px;
+  padding: 0 88px; 
+  box-sizing: border-box; 
+  width: 100%;
 }
 ul li {
   display: flex;
@@ -108,41 +110,41 @@ ul li {
   gap: 8px;              
 }
 .nav1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0px;
 }
 .nav1 a{
-    color: rgb(255, 255, 255);
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 120%;
-    letter-spacing: 0%;
-    text-align: left;
-    text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: left;
+  text-decoration: none;
 }
 .nav2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0px;
 }
 .nav2 a {
-    color: rgb(255, 255, 255);
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 120%;
-    letter-spacing: 0%;
-    text-align: left;
-    text-decoration: none;
-    white-space: pre-line;
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: left;
+  text-decoration: none;
+  white-space: pre-line;
 }
 
 .horizontal-list {
@@ -154,16 +156,16 @@ ul li {
 }
 .horizontal-list li,
 .horizontal-list li a{
-    margin-right: 0;
-    color: rgb(255, 255, 255);
-    font-family: "Open Sans";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 121%;
-    letter-spacing: 0%;
-    text-align: left;
-    opacity: 0.6;
-    text-decoration: none;
+  margin-right: 0;
+  color: rgb(255, 255, 255);
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 121%;
+  letter-spacing: 0%;
+  text-align: left;
+  opacity: 0.6;
+  text-decoration: none;
 }
 .horizontal-list li:first-child {
   margin-right: 290px;
@@ -172,16 +174,65 @@ ul li {
   margin-right: 185px;
 }
 .f-button {
-    padding: 16px 40px;
-    font-weight: 400;
+  padding: 16px 40px;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif; 
+  color: white;
+  background-color: rgba(2, 159, 89, 1);
+  border: none;          
+  border-radius: 10px;    
+  cursor: pointer;       
+  text-decoration: none; 
+  transition: all 0.3s ease;
+}
+
+
+
+
+@media (max-width: 1024px) {
+  .footer-ul{
+    padding: 0 40px; 
+  }
+  .nav1 a{
     font-size: 14px;
-    font-family: 'Montserrat', sans-serif; 
-    color: white;
-    background-color: rgba(2, 159, 89, 1);
-    border: none;          
-    border-radius: 10px;    
-    cursor: pointer;       
-    text-decoration: none; 
-    transition: all 0.3s ease;
+  }
+  .nav2 a{
+    font-size: 12px;
+  }
+  .horizontal-list {
+    gap: 6px;
+  }
+  .horizontal-list li:first-child {
+    margin-right: 60px;
+  }
+  .horizontal-list li:nth-child(2) {
+    margin-right: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    margin: 0;
+    padding: 0;
+  }
+  .footer-ul {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 40px;
+    gap: 1px;
+  }
+  .horizontal-list {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 40px 40px;
+    margin: 0;
+    gap: 16px;
+  }
+  .horizontal-list li {
+    opacity: 0.8;
+    margin-right: 0 !important;
+  }
 }
 </style>

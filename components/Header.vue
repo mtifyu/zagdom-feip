@@ -1,5 +1,16 @@
 <script setup>
 import { NuxtLink } from '#components'
+import Drawer from '~/components/Drawer.vue'
+import { ref } from 'vue'
+
+// Состояние drawer
+const drawerOpen = ref(false)
+
+// Переключение drawer
+function toggleDrawer() {
+  console.log('Бургер нажат');
+  drawerOpen.value = !drawerOpen.value
+}
 </script>
 
 <template>
@@ -16,9 +27,13 @@ import { NuxtLink } from '#components'
     </div>
     <div class="header-button">
         <img src="/public/pictures/phone.png" alt="phone" class="phone">
-        <a href="tel:+7 (900) 900-90-90" class="phone">+7 (900) 900-90-90</a>
+        <a href="tel:+7 (900) 900-90-90" class="phone1">+7 (900) 900-90-90</a>
         <button class="h-button">Оставить заявку</button>
     </div>
+    <button @click="toggleDrawer" class="burger-btn">
+      <img src="/pictures/Button.png" alt="burger menu">
+    </button>
+    <Drawer v-model:isOpen="drawerOpen" />
 </div>
 </template>
 
@@ -33,8 +48,9 @@ import { NuxtLink } from '#components'
 }
 .header-navbar{
     display: flex;
+    flex-wrap: wrap;
     gap: 24px;
-    justify-content: center; 
+    /* justify-content: center;  */
 }
 .header-button {
     margin-left: auto;
@@ -48,13 +64,14 @@ import { NuxtLink } from '#components'
 .header-button .phone {
     height: 16px;
 }
-.phone {
+.phone1 {
     color: rgba(37, 71, 65, 1);
     text-decoration: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 14px;
+    width: 134px;
 }
 .link {
     color:rgba(102, 102, 102, 1);
@@ -79,5 +96,51 @@ import { NuxtLink } from '#components'
     cursor: pointer;       
     text-decoration: none; 
     transition: all 0.3s ease;
+}
+.burger-btn {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .header {
+    padding: 24px 24px;
+  }
+  .header-navbar {
+    display: none; /* Скрываем основное меню */
+  }
+
+  .header-button {
+    display: none; /* Скрываем кнопку и телефон */
+  }
+
+  .burger-btn {
+    display: block; /* Показываем бургер */
+  }
+}
+@media (max-width: 993px) {
+  .header-navbar {
+      display: none; /* Скрываем основное меню */
+    }
+}
+@media (max-width: 1150px) {
+  .header {
+    padding: 18px 40px;
+  }
+
+  .header-logo {
+    margin-right: 40px;
+  }
+
+  .header-navbar {
+    gap: 10px;
+  }
+
+  .header-button {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
 }
 </style>
