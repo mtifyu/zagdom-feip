@@ -4,6 +4,7 @@ import Footer from './components/Footer.vue';
 import Content from './components/Content.vue';
 import Drawer from './components/Drawer.vue'
 import '@csstools/normalize.css';
+import 'sanitize.css';
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
