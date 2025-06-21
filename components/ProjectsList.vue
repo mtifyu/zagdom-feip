@@ -20,7 +20,6 @@ const project1_image_2x = '/projects/project1_image_2x.jpg';
 const project2_image_1x = '/projects/project2_image_1x.jpg';
 const project2_image_2x = '/projects/project2_image_2x.jpg';
 
-
 const projects = [
   {
     image: {
@@ -51,9 +50,10 @@ const projects = [
   align-items: flex-start;
   gap: 32px;
   margin: 0;
-  padding: 80px 90px 80px 90px;
+  padding: 80px 90px;
   background-color: #f5f7f3;
 }
+
 h1 {
   color: rgb(0, 0, 0);
   font-family: 'Montserrat';
@@ -63,20 +63,44 @@ h1 {
   letter-spacing: 0%;
   text-align: left;
   margin: 0px;
+  width: 100%;
 }
+
 .list {
   display: grid;
-  column-gap: 16px;
-  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(572px, 1fr));
   justify-content: space-between;
-  overflow: auto;
+  width: 100%;
 }
-@media (max-width: 1150px) {
 
+@media (max-width: 1150px) {
+  .part-of-page {
+    padding: 60px 40px;
+  }
 }
+
 @media (max-width: 768px) {
-  .h1 {
+  .part-of-page {
+    padding: 40px 16px;
+    gap: 24px;
+  }
+  
+  h1 {
     font-size: 28px;
+  }
+  
+  .list {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+  
+  .list::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>

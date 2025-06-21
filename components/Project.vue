@@ -8,6 +8,7 @@ defineProps({
    description: String,
 })
 </script>
+
 <template>
    <div class='project'>
       <div class="card-description">
@@ -26,9 +27,11 @@ defineProps({
    display: flex;
    border-radius: 20px;
    background: white;
-   max-width: 624px;
+   max-width: 573px;
    min-width: 572px;
+   height: 100%;
 }
+
 .card-description {
    display: flex;
    flex-direction: column;
@@ -48,6 +51,7 @@ defineProps({
    margin: 0px;
    padding: 0px;
 }
+
 .project-description {
    color: rgb(102, 102, 102);
    font-family: 'Open Sans';
@@ -58,8 +62,32 @@ defineProps({
    margin: 0px;
    padding: 0px;
 }
+
 .image {
    border-radius: 0px 20px 20px 0px;
+   width: 304px;
+   height: 100%;
+   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 85vw;
+  }
+  
+  .card-description {
+    order: 2;
+    width: auto;
+    margin: 24px;
+  }
+  
+  .image {
+    order: 1;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 200px;
+  }
 }
 </style>
-

@@ -1,13 +1,13 @@
 <template>
   <div class="content">
-    <!-- <ProjectsList /> -->
-    <!-- <News /> -->
+    <ProjectsList />
+    <News />
   </div>
 </template>
 
 <script setup>
-// import ProjectsList from './ProjectsList.vue'; 
-// import News from './News.vue'; 
+import ProjectsList from './ProjectsList.vue'; 
+import News from './News.vue'; 
 </script>
 
 <style scoped>
