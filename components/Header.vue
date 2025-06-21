@@ -8,8 +8,7 @@ const drawerOpen = ref(false)
 
 // Переключение drawer
 function toggleDrawer() {
-  console.log('Бургер нажат');
-  drawerOpen.value = !drawerOpen.value
+  drawerOpen.value = !drawerOpen.value;
 }
 </script>
 
@@ -25,10 +24,14 @@ function toggleDrawer() {
         <NuxtLink to="/about" class="link">Новости</NuxtLink>
         <NuxtLink to="/about" class="link">Контакты</NuxtLink>
     </div>
-    <div class="header-button">
+    <div class="phone-and-button">
+      <div class="header-phone">
         <img src="/public/pictures/phone.png" alt="phone" class="phone">
         <a href="tel:+7 (900) 900-90-90" class="phone1">+7 (900) 900-90-90</a>
+      </div>
+      <div class="header-button">
         <button class="h-button">Оставить заявку</button>
+      </div>
     </div>
     <button @click="toggleDrawer" class="burger-btn">
       <img src="/pictures/Button.png" alt="burger menu">
@@ -50,96 +53,112 @@ function toggleDrawer() {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    /* justify-content: center;  */
+}
+.phone-and-button {
+  margin-left: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px;
+}
+.header-phone {
+  gap: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px;
 }
 .header-button {
-    margin-left: auto;
-    gap: 24px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px;
+  margin-left: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px;
 }
 .header-button .phone {
-    height: 16px;
+  height: 16px;
 }
 .phone1 {
-    color: rgba(37, 71, 65, 1);
-    text-decoration: none;
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    width: 134px;
+  color: rgba(37, 71, 65, 1);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  width: 134px;
 }
 .link {
-    color:rgba(102, 102, 102, 1);
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: 400;
-    font-size: 16px;
-    font-family: "Open Sans";
-    line-height: 120%;
-    letter-spacing: 0%;
-    text-align: left;
+  color:rgba(102, 102, 102, 1);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Open Sans";
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: left;
 }
 .h-button {
-    padding: 16px 40px;
-    font-weight: 400;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif; 
-    color: white;
-    background-color: rgba(2, 159, 89, 1);
-    border: none;          
-    border-radius: 10px;    
-    cursor: pointer;       
-    text-decoration: none; 
-    transition: all 0.3s ease;
+  width: 200px;
+  height: 50px;
+  padding: 16px 40px;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif; 
+  color: white;
+  background-color: rgba(2, 159, 89, 1);
+  border: none;          
+  border-radius: 10px;    
+  cursor: pointer;       
+  text-decoration: none; 
+  transition: all 0.3s ease;
 }
 .burger-btn {
   display: none;
-  margin-left: auto;
   background: none;
   border: none;
   cursor: pointer;
 }
-@media (max-width: 768px) {
+@media (max-width: 514px) {
+  .header-phone {
+    display: none; 
+  }
+}
+@media (max-width: 848px) {
   .header {
     padding: 24px 24px;
   }
   .header-navbar {
-    display: none; /* Скрываем основное меню */
+    display: none; 
   }
-
   .header-button {
-    display: none; /* Скрываем кнопку и телефон */
+    display: none; 
   }
-
   .burger-btn {
-    display: block; /* Показываем бургер */
+    display: block; 
+    margin-left: 25px;
   }
 }
-@media (max-width: 993px) {
-  .header-navbar {
-      display: none; /* Скрываем основное меню */
-    }
-}
-@media (max-width: 1150px) {
+@media (max-width: 955px) {
   .header {
     padding: 18px 40px;
   }
-
+}
+@media (max-width: 1150px) {
   .header-logo {
     margin-right: 40px;
   }
-
   .header-navbar {
-    gap: 10px;
+    gap: 13px;
+    margin: 3px;
   }
-
   .header-button {
-    padding: 12px 24px;
+    padding: 12px 0px;
     font-size: 12px;
   }
 }

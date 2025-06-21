@@ -1,8 +1,8 @@
 <script>
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import Content from './components/Content.vue';
-import Drawer from './components/Drawer.vue'
+import MainPage1 from './components/MainPage1.vue';
+import MainPage2 from './components/MainPage2.vue';
 import '@csstools/normalize.css';
 import 'sanitize.css';
 useHead({
@@ -13,11 +13,12 @@ useHead({
 </script>
 
 <template>
+  <Header />
   <div class="page">
-    <Header />
-    <Content  class="content-wrapper" />
-    <Footer />
+    <MainPage1  class="content-wrapper"/>
+    <MainPage2  class="content-wrapper"/>
   </div>
+  <Footer />
 </template>
 
 <style>

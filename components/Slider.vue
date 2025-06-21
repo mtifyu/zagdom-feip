@@ -1,6 +1,5 @@
 <template>
-    <Swiper ref="swiperEl" :modules="modules"
-    navigation pagination :loop="true">
+    <Swiper ref="swiperEl" :modules="modules" :navigation="true" :pagination="true" :loop="true">
         <SwiperSlide v-for="slide in slides" >
             <figure class="s-figure">
                 <picture class="s-figure-picture">
@@ -17,7 +16,7 @@
                 </figcaption>
             </figure>
         </SwiperSlide>
-        <SliderControls :swiper="swiperEl?.swiper" />
+        <SliderControls v-if="swiperEl?.swiper" :swiper="swiperEl.swiper" />
     </Swiper>
 </template>
 
@@ -28,6 +27,7 @@
     overflow: hidden;
     margin-bottom: 120px;
     margin-top: 40px;
+    
 }
 
 .s-figure {
@@ -79,7 +79,7 @@
     @media(max-width: 1150px){
         position: absolute;
         bottom: 113px;
-        left: 60px;
+        left: 71px;
         right: 144px;
     }
     @media (max-width: 514px) {
@@ -153,7 +153,8 @@
     background-color: #03B766;
     color: white;
     padding: 2px 22px;
-    border-radius: 10px;;
+    border-radius: 10px;
+    margin: 0px 42px 0px 42px;
 }
 
 .swiper-button-prev:after, .swiper-button-next:after{
