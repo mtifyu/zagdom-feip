@@ -45,7 +45,7 @@
     text-align: left;
 }
 .text p + p {
-    margin-top: 16px; /* Отступ между двумя абзацами */
+    margin-top: 16px; 
 }
 .text p {
     color: rgb(102, 102, 102);
@@ -103,7 +103,7 @@
         height: auto; 
     }
     .grid {
-        grid-template-columns: 1fr; /* одна колонка */
+        grid-template-columns: 1fr; 
         grid-auto-rows: auto;
         gap: 10px;
     }
@@ -120,7 +120,7 @@
         font-size: 20px;
     }
     .grid {
-        grid-template-columns: 1fr; /* одна колонка */
+        grid-template-columns: 1fr; 
         grid-auto-rows: auto;
         gap: 10px;
     }

@@ -1,14 +1,21 @@
 <script setup>
 import { NuxtLink } from '#components'
 import Drawer from '~/components/Drawer.vue'
+import Modalka from '~/components/Modalka.vue' 
 import { ref } from 'vue'
-
-// Состояние drawer
 const drawerOpen = ref(false)
+const modalOpen = ref(false)
 
-// Переключение drawer
 function toggleDrawer() {
   drawerOpen.value = !drawerOpen.value;
+}
+
+function openModal() {
+  modalOpen.value = true;
+}
+
+function closeModal() {
+  modalOpen.value = false;
 }
 </script>
 
@@ -30,13 +37,14 @@ function toggleDrawer() {
         <a href="tel:+7 (900) 900-90-90" class="phone1">+7 (900) 900-90-90</a>
       </div>
       <div class="header-button">
-        <button class="h-button">Оставить заявку</button>
+        <button class="h-button" @click="openModal">Оставить заявку</button>
       </div>
     </div>
     <button @click="toggleDrawer" class="burger-btn">
       <img src="/pictures/Button.png" alt="burger menu">
     </button>
     <Drawer v-model:isOpen="drawerOpen" />
+    <Modalka :open="modalOpen" @update:open="closeModal" />
 </div>
 </template>
 

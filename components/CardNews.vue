@@ -1,12 +1,23 @@
 <script setup>
-defineProps({
-   image: {
-      x1: String,
-      x2: String,
-   },
-   title: String,
-   description: String,
-})
+import truncate from 'truncate-html';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
+import { computed } from 'vue';
+
+const props = defineProps({
+  image: {
+    x1: String,
+    x2: String,
+  },
+  date: Date, 
+  title: String,
+  description: String,
+});
+
+const formattedDate = computed(() => {
+  if (!props.date) return '';
+  return format(props.date, 'dd MMM yyyy', { locale: ru });
+});
 </script>
 
 <template>
@@ -16,9 +27,13 @@ defineProps({
       <img :src='image.x1' :alt='title' class='image' />
     </picture>
     <div class="card-content">
-      <p>20 авг 2021</p>
-      <h4 class="card-title">{{title}}</h4>
-      <p class="card-description" v-html='description'></p>
+      <p>{{ formattedDate }}</p>
+      <h4 class="card-title">{{ title }}</h4>
+      <p class="card-description" v-html='truncate(description, { 
+          length: 10, 
+          byWords: true, 
+          ellipsis: "..." 
+        })'></p>
     </div>
   </div>
 </template>

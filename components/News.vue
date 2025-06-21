@@ -1,3 +1,34 @@
+<script setup>
+import CardNews from './CardNews.vue';
+
+const news = [
+  {
+    image: { x1: '/news/news1_1x.jpg', x2: '/news/news1_2x.jpg' },
+    date: new Date('2021-08-20'), 
+    title: 'Как сделать строительство дешевле?',
+    description: 'Строительство дома можно сделать дешевле — выбрав проект...',
+  },
+  {
+    image: { x1: '/news/news2_1x.jpg', x2: '/news/news2_2x.jpg' },
+    date: new Date('2021-09-15'), 
+    title: 'Почему Гуд Вилл строит лучшие дома?',
+    description: 'Хотим обрадовать тех, кто планирует переезд из квартиры в дом...',
+  },
+  {
+    image: { x1: '/news/news3_1x.jpg', x2: '/news/news3_2x.jpg' },
+    date: new Date('2021-10-03'), 
+    title: 'Преимущества и недостатки частного дома',
+    description: 'Первое и главное: строим дом индивидуально для вас, по вашим...',
+  },
+  {
+    image: { x1: '/news/news4_1x.jpg', x2: '/news/news4_2x.jpg' },
+    date: new Date('2021-11-27'), 
+    title: 'Из чего мы строим дома в ипотеку?',
+    description: 'Самый популярный вопрос наших клиентов касается материалов, которы...',
+  }
+];
+</script>
+
 <template>
   <div class="part-of-page">
     <div class="news-header">
@@ -6,62 +37,17 @@
     </div>
     <div class="list">
       <CardNews
-        v-for="(news, index) in news"
+        v-for="(item, index) in news"
         :key="index"
-        :title="news.title"
-        :description="news.description"
-        :image="news.image"
+        :title="item.title"
+        :description="item.description"
+        :image="item.image"
+        :date="item.date"
       />
     </div>
   </div>
 </template>
 
-<script setup>
-import CardNews from './CardNews.vue';
-const news1_image_1x = '/news/news1_1x.jpg';
-const news1_image_2x = '/news/news1_2x.jpg';
-const news2_image_1x = '/news/news2_1x.jpg';
-const news2_image_2x = '/news/news2_2x.jpg';
-const news3_image_1x = '/news/news3_1x.jpg';
-const news3_image_2x = '/news/news3_2x.jpg';
-const news4_image_1x = '/news/news4_1x.jpg';
-const news4_image_2x = '/news/news4_2x.jpg';
-
-const news = [
-  {
-    image: {
-      x1: news1_image_1x,
-      x2: news1_image_2x,
-    },
-    title: 'Как сделать строительство дешевле?',
-    description: 'Строительство дома можно сделать дешевле — выбрав проект...',
-  },
-  {
-    image: {
-      x1: news2_image_1x,
-      x2: news2_image_2x,
-    },
-    title: 'Почему Гуд Вилл строит лучшие дома?',
-    description: 'Хотим обрадовать тех, кто планирует переезд из квартиры в дом...',
-  },
-  {
-    image: {
-      x1: news3_image_1x,
-      x2: news3_image_2x,
-    },
-    title: 'Преимущества и недостатки частного дома',
-    description: 'Первое и главное: строим дом индивидуально для вас, по вашим...',
-  },
-  {
-    image: {
-      x1: news4_image_1x,
-      x2: news4_image_2x,
-    },
-    title: 'Из чего мы строим дома в ипотеку?',
-    description: 'Самый популярный вопрос наших клиентов касается материалов, которы...',
-  }
-];
-</script>
 
 <style scoped>
 .part-of-page {
@@ -102,6 +88,7 @@ h1 {
   line-height: 17px;
   background-color: #ffff;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .news-header {

@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <div class="footer-ul">
-          <img src="/public/pictures/logo2.png" alt="logo">
+          <img class="logo" src="/public/pictures/logo2.png" alt="logo">
           <ul class="nav1">
               <li v-for="item in nav" :key="item.url">
                   <a :href="item.url">
@@ -19,7 +19,7 @@
           </ul>
           <button class="f-button">Оставить заявку</button>
         </div>
-        <div>
+        <div class="footer-bottom">
             <ul class="horizontal-list">
                 <li>© Загдом, 2021</li>
                 <li v-for="item in nav3" :key="item.url">
@@ -82,104 +82,120 @@ const nav3 = ref([
 ])
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$footer-bg: rgb(37, 71, 65);
+$text-color: rgb(255, 255, 255);
+$button-bg: rgba(2, 159, 89, 1);
+$footer-bottom-text-color: rgba(255, 255, 255, 0.6);
+$footer-link-opacity: 0.6;
+
 * {
   box-sizing: border-box;
 }
+
 .footer {
   width: 100%;
   margin: 0px;
   padding: 0px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(37, 71, 65);
+  background-color: $footer-bg;
 }
-.footer-ul{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+
+.footer-ul {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  grid-template-areas: 
+    "logo nav1 nav2 button";
+  align-items: start;
   margin-top: 31.5px;
   padding: 0 88px; 
-  box-sizing: border-box; 
+  gap: 40px;
   width: 100%;
 }
+
+.logo { grid-area: logo; }
+.nav1 { grid-area: nav1; }
+.nav2 { grid-area: nav2; }
+.f-button { grid-area: button; }
+
 ul li {
   display: flex;
   align-items: center;
   gap: 8px;              
 }
+
 .nav1 {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 24px;
   padding: 0px;
+  
+  a {
+    color: $text-color;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: left;
+    text-decoration: none;
+  }
 }
-.nav1 a{
-  color: rgb(255, 255, 255);
-  font-family: "Open Sans";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 120%;
-  letter-spacing: 0%;
-  text-align: left;
-  text-decoration: none;
-}
+
 .nav2 {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 24px;
   padding: 0px;
+  
+  a {
+    color: $text-color;
+    font-family: "Montserrat";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: left;
+    text-decoration: none;
+    white-space: pre-line;
+  }
 }
-.nav2 a {
-  color: rgb(255, 255, 255);
-  font-family: "Montserrat";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 120%;
-  letter-spacing: 0%;
-  text-align: left;
-  text-decoration: none;
-  white-space: pre-line;
+
+.footer-bottom {
+  margin-top: 40px;
 }
 
 .horizontal-list {
   display: flex;
-  flex-direction: row;
   margin-bottom: 33px;
   margin-left: 88px;
   padding: 0px;
+  
+  li, li a {
+    margin-right: 0;
+    color: $footer-bottom-text-color;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 121%;
+    text-decoration: none;
+  }
+  
+  li:first-child {
+    margin-right: 290px;
+  }
+  
+  li:nth-child(2) {
+    margin-right: 185px;
+  }
 }
-.horizontal-list li,
-.horizontal-list li a{
-  margin-right: 0;
-  color: rgb(255, 255, 255);
-  font-family: "Open Sans";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 121%;
-  letter-spacing: 0%;
-  text-align: left;
-  opacity: 0.6;
-  text-decoration: none;
-}
-.horizontal-list li:first-child {
-  margin-right: 290px;
-}
-.horizontal-list li:nth-child(2) {
-  margin-right: 185px;
-}
+
 .f-button {
   padding: 16px 40px;
   font-weight: 400;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif; 
-  color: white;
-  background-color: rgba(2, 159, 89, 1);
+  color: $text-color;
+  background-color: $button-bg;
   border: none;          
   border-radius: 10px;    
   cursor: pointer;       
@@ -187,52 +203,69 @@ ul li {
   transition: all 0.3s ease;
 }
 
-
-
-
 @media (max-width: 1024px) {
   .footer-ul{
     padding: 0 40px; 
+    gap: 30px;
   }
-  .nav1 a{
+  
+  .nav1 a {
     font-size: 14px;
   }
-  .nav2 a{
+  
+  .nav2 a {
     font-size: 12px;
   }
+  
   .horizontal-list {
     gap: 6px;
-  }
-  .horizontal-list li:first-child {
-    margin-right: 60px;
-  }
-  .horizontal-list li:nth-child(2) {
-    margin-right: 50px;
+    
+    li:first-child {
+      margin-right: 60px;
+    }
+    
+    li:nth-child(2) {
+      margin-right: 50px;
+    }
   }
 }
+
 @media (max-width: 768px) {
   .footer {
     margin: 0;
     padding: 0;
   }
+  
   .footer-ul {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "logo"
+      "nav1"
+      "nav2"
+      "button";
+    gap: 24px;
     padding: 0 40px;
-    gap: 1px;
   }
+  
+  .f-button {
+    justify-self: start;
+    margin-top: 10px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+  }
+  
   .horizontal-list {
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 40px 40px;
-    margin: 0;
+    margin-left: 40px;
+    margin-bottom: 40px;
     gap: 16px;
-  }
-  .horizontal-list li {
-    opacity: 0.8;
-    margin-right: 0 !important;
+    
+    li {
+      opacity: $footer-link-opacity;
+      margin-right: 0 !important;
+    }
   }
 }
 </style>

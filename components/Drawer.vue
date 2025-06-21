@@ -39,7 +39,6 @@ import WhiteEmail from '/icons/WhiteEmail.svg'
 import WhitePoint from '/icons/WhitePoint.svg'
 import { ref } from 'vue';
 
-// Получаем isOpen из props и передаём событие изменения
 const props = defineProps(['isOpen'])
 const emit = defineEmits(['update:isOpen'])
 
@@ -47,10 +46,9 @@ function toggleDrawer() {
   const newValue = !props.isOpen
   emit('update:isOpen', newValue)
 
-  // Дополнительно управляем overflow у body
   document.body.style.overflow = newValue ? 'hidden' : ''
 }
-// Также можно использовать watch, чтобы реагировать на изменения извне
+
 watch(
   () => props.isOpen,
   (newVal) => {
