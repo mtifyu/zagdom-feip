@@ -1,10 +1,7 @@
 <template>
+  <Breadcrumbs current-page="Новости" />
   <div class="content">
-    <div class="breadcrumbs">
-      <NuxtLink to="/" class="breadcrumb-link">Главная</NuxtLink> / Новости
-    </div>
-    
-    <h1 class="page-title">Новости</h1>
+    <PageTitle title="Новости" />
     
     <div class="news-grid">
       <CardNews
@@ -31,6 +28,7 @@
 import { ref, computed, watch } from 'vue';
 import CardNews from '~/components/CardNews.vue';
 import Pagination from '~/components/Pagination.vue';
+import PageTitle from '~/components/PageTitle.vue'; 
 
 const newsList = [
   {
@@ -250,35 +248,12 @@ watch(newsList, () => {
   margin: 0 auto;
 }
 
-.breadcrumb-link {
-  color: rgb(2, 159, 89);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.breadcrumb-link:hover {
-  text-decoration: underline;
-}
-
-.breadcrumbs {
-  color: #666;
-  font-family: 'Open Sans';
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-
-.page-title {
-  font-family: 'Montserrat';
-  font-size: 36px;
-  font-weight: 500;
-  margin-bottom: 40px;
-}
-
 .news-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 16px;
   margin-bottom: 60px;
+  margin-top: 32px;
 }
 
 .pagination-container {
@@ -316,7 +291,7 @@ watch(newsList, () => {
   }
   
   .page-title {
-    font-size: 28px;
+    font-size: 32px;
   }
   
   .news-grid {

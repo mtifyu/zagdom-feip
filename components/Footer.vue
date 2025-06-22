@@ -13,7 +13,7 @@
               <li v-for="item in nav2" :key="item.url">
                   <img :src="item.icon" alt="icon">
                   <a :href="item.url">
-                      {{ item.label}}
+                      {{ item.label }}
                   </a>
               </li>
           </ul>
@@ -36,7 +36,14 @@
 import Telephone from '/icons/telephone.svg'
 import Email from '/icons/email.svg'
 import Point from '/icons/point.svg'
+import { mockContacts } from '~/mock/contacts'
 import { ref } from 'vue'
+
+const { phone, email, address } = mockContacts
+
+// Заменяем <br /> на \n для корректного отображения переноса
+const formattedAddress = address.replace('<br />', '\n')
+
 const nav = ref([
   {
     url: '/projects',
@@ -53,21 +60,19 @@ const nav = ref([
 ])
 const nav2 = ref([
   {
-    url: 'tel:+7(900)900-90-90',
+    url: `tel:${phone.value}`,
     icon: Telephone,
-    label: '+7 (900) 900-90-90',
+    label: phone.label,
   },
   {
-    url: 'mailto:info@gmail.com',
+    url: `mailto:${email}`,
     icon: Email,
-    label: 'info@gmail.com',
+    label: email,
   },
   {
     url: 'https://www.google.com/maps/dir/?api=1&destination=55.751244 ,37.618423',
     icon: Point,
-    label:`г. Владивосток
-      ул. Выселковая 49, стр.3
-    `,
+    label: formattedAddress, // Используем отформатированный адрес
   },
 ])
 const nav3 = ref([
@@ -156,12 +161,8 @@ ul li {
     line-height: 120%;
     text-align: left;
     text-decoration: none;
-    white-space: pre-line;
+    white-space: pre-line; /* Сохраняем переносы строк */
   }
-}
-
-.footer-bottom {
-  margin-top: 40px;
 }
 
 .horizontal-list {

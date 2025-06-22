@@ -2,7 +2,9 @@
 import { NuxtLink } from '#components'
 import Drawer from '~/components/Drawer.vue'
 import Modalka from '~/components/Modalka.vue' 
+import { mockContacts } from '~/mock/contacts'
 import { ref } from 'vue'
+const { phone } = mockContacts
 const drawerOpen = ref(false)
 const modalOpen = ref(false)
 
@@ -34,7 +36,7 @@ function closeModal() {
     <div class="phone-and-button">
       <div class="header-phone">
         <img src="/public/pictures/phone.png" alt="phone" class="phone">
-        <a href="tel:+7 (900) 900-90-90" class="phone1">+7 (900) 900-90-90</a>
+        <a :href="`tel:${phone.value}`" class="phone1">{{ phone.label }}</a>
       </div>
       <div class="header-button">
         <button class="h-button" @click="openModal">Оставить заявку</button>

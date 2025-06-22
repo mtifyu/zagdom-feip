@@ -74,13 +74,15 @@ function closeDialog() {
 }
 
 .DialogContent {
-    width: 448px;
-    height: 603px;
-    border-radius: 10px;
-    background: rgb(245, 247, 243);
-    padding: 48px;
-    z-index: 2;
-    position: relative;
+  width: 448px;
+  height: auto; 
+  min-height: 603px;
+  border-radius: 10px;
+  background: rgb(245, 247, 243);
+  padding: 48px;
+  z-index: 2;
+  position: relative;
+  max-height: 90vh; 
 
   .modal-header {
     display: flex;
@@ -94,6 +96,7 @@ function closeDialog() {
     flex-direction:column;
     gap:24px;
   }
+  
   .btn-accept {
     display: flex;
     flex-direction:column;
@@ -151,19 +154,19 @@ function closeDialog() {
   }
   
   .submit-btn {
-   width: 200px;
-   height: 50px;
-   padding: 16px 40px;
-   font-weight: 400;
-   font-size: 14px;
-   font-family: 'Montserrat', sans-serif; 
-   color: white;
-   background-color: rgba(2, 159, 89, 1);
-   border: none;          
-   border-radius: 10px;    
-   cursor: pointer;       
-   text-decoration: none; 
-   transition: all 0.3s ease;
+    width: 200px;
+    height: 50px;
+    padding: 16px 40px;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif; 
+    color: white;
+    background-color: rgba(2, 159, 89, 1);
+    border: none;          
+    border-radius: 10px;    
+    cursor: pointer;       
+    text-decoration: none; 
+    transition: all 0.3s ease;
   }
 
   p {
@@ -171,6 +174,7 @@ function closeDialog() {
     font-size: 14px;
     margin-top: 16px;
   }
+  
   span {
     color: rgb(2, 159, 89);
     font-size: 14px;
@@ -187,4 +191,43 @@ function closeDialog() {
   margin-left: 16px;
 }
 
+@media (max-width: 1024px) {
+  .DialogContent {
+    max-width: 600px;
+    padding: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .DialogContent {
+    width: 90%;
+    max-width: 100%; 
+    padding: 24px; 
+    min-height: 500px; 
+    h3 {
+      font-size: 30px;
+      line-height: 130%;
+    }
+    
+    .modal-header {
+      margin-top: 40px;
+    }
+    .form-group {
+      input, textarea {
+        padding: 10px 14px; 
+      }
+      
+      textarea {
+        min-height: 100px; 
+      }
+    }
+    
+    .submit-btn {
+      max-width: 280px; 
+    }
+    
+    .placeholders {
+      gap: 16px; 
+    }
+  }
+}
 </style>
