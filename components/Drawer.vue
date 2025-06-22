@@ -14,8 +14,8 @@
                 <nav class="nav1">
                 <ul>
                     <li><a href="/">Реализованные проекты</a></li>
-                    <li><a href="/">Новости</a></li>
-                    <li><a href="/">Контакты</a></li>
+                    <li><a href="/news">Новости</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
                 </ul>
                 </nav>
                 <ul class="nav2">

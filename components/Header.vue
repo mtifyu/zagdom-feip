@@ -28,8 +28,8 @@ function closeModal() {
     </div>
     <div class="header-navbar">
         <NuxtLink to="/" class="link">Реализованные проекты</NuxtLink>
-        <NuxtLink to="/about" class="link">Новости</NuxtLink>
-        <NuxtLink to="/about" class="link">Контакты</NuxtLink>
+        <NuxtLink to="/news" class="link">Новости</NuxtLink>
+        <NuxtLink to="/contacts" class="link">Контакты</NuxtLink>
     </div>
     <div class="phone-and-button">
       <div class="header-phone">
@@ -49,6 +49,9 @@ function closeModal() {
 </template>
 
 <style scoped>
+.router-link-exact-active {
+  color: rgb(2, 159, 89) !important;
+}
 .header {
     display: flex;
     padding: 24px 88px;

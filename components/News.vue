@@ -33,7 +33,7 @@ const news = [
   <div class="part-of-page">
     <div class="news-header">
       <h1>Новости</h1>
-      <button class="btn-news">Все новости</button>
+      <NuxtLink to="/news" class="btn-news">Все новости</NuxtLink>
     </div>
     <div class="list">
       <CardNews
@@ -89,6 +89,7 @@ h1 {
   background-color: #ffff;
   white-space: nowrap;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .news-header {

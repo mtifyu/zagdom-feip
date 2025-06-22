@@ -43,12 +43,12 @@ const formattedDate = computed(() => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
   border-radius: 20px;
   background: white;
   overflow: hidden;
   height: 100%;
   transition: transform 0.3s ease;
+  width: 304px;
 }
 
 .image {
@@ -63,6 +63,7 @@ const formattedDate = computed(() => {
   flex-direction: column;
   padding: 24px;
   gap: 12px;
+  
 }
 
 p {
