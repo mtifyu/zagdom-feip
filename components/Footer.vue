@@ -1,32 +1,36 @@
 <template>
     <div class="footer">
-        <div class="footer-ul">
+        <div class="footer-content">
           <img class="logo" src="/public/pictures/logo2.png" alt="logo">
-          <ul class="nav1">
-              <li v-for="item in nav" :key="item.url">
-                  <a :href="item.url">
-                  {{ item.label }}
-                  </a>
-              </li>
-          </ul>
-          <ul class="nav2">
-              <li v-for="item in nav2" :key="item.url">
-                  <img :src="item.icon" alt="icon">
-                  <a :href="item.url">
-                      {{ item.label }}
-                  </a>
-              </li>
-          </ul>
-          <button class="f-button" @click="modalOpen = true">Оставить заявку</button>
-        </div>
-        <div class="footer-bottom">
-            <ul class="horizontal-list">
-                <li>© Загдом, 2021</li>
-                <li v-for="item in nav3" :key="item.url">
+          <div class="navs">
+            <ul class="nav1">
+                <li v-for="item in nav" :key="item.url">
+                    <a :href="item.url">
+                    {{ item.label }}
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav2">
+                <li v-for="item in nav2" :key="item.url">
+                    <img :src="item.icon" alt="icon">
                     <a :href="item.url">
                         {{ item.label }}
                     </a>
                 </li>
+            </ul>
+          </div>
+          <button class="f-button" @click="modalOpen = true">Оставить заявку</button>
+        </div>
+        <div class="footer-bottom">
+            <ul class="footer-links">
+                <li>© Загдом, 2021</li>
+                <div class="footer-links-2">
+                  <li v-for="item in nav3" :key="item.url">
+                    <a :href="item.url">
+                      {{ item.label }}
+                    </a>
+                  </li>
+                </div>
             </ul>
         </div>
         <RequestModal v-model:open="modalOpen" />
@@ -96,179 +100,210 @@ $button-bg: rgba(2, 159, 89, 1);
 $footer-bottom-text-color: rgba(255, 255, 255, 0.6);
 $footer-link-opacity: 0.6;
 
-* {
-  box-sizing: border-box;
-}
-
 .footer {
   width: 100%;
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
   background-color: $footer-bg;
+  color: $text-color;
+  padding-top: 32px;
 }
 
-.footer-ul {
+.navs {
   display: grid;
-  grid-template-columns: auto 1fr 1fr auto;
-  grid-template-areas: 
-    "logo nav1 nav2 button";
+  grid-template-columns: auto auto;
+  gap: 25px;
+  
+  @media (max-width: 1024px) {
+    gap: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: start;
-  margin-top: 31.5px;
-  padding: 0 88px; 
   gap: 40px;
-  width: 100%;
-}
-
-.logo { grid-area: logo; }
-.nav1 { grid-area: nav1; }
-.nav2 { grid-area: nav2; }
-.f-button { grid-area: button; }
-
-ul li {
-  display: flex;
-  align-items: center;
-  gap: 8px;              
-}
-
-.nav1 {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 0px;
+  padding: 0 88px;
+  margin-bottom: 15px;
   
-  a {
-    color: $text-color;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 120%;
-    text-align: left;
-    text-decoration: none;
+  @media (max-width: 1200px) {
+    gap: 30px;
+    padding: 0 60px;
+  }
+  
+  @media (max-width: 1024px) {
+    gap: 25px;
+    padding: 0 40px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0 24px;
   }
 }
 
-.nav2 {
+.logo { 
+  @media (max-width: 768px) {
+    margin-bottom: 8px;
+  }
+}
+
+.nav1, .nav2 {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 0px;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
   
-  a {
-    color: $text-color;
-    font-family: "Montserrat";
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 120%;
-    text-align: left;
-    text-decoration: none;
-    white-space: pre-line;
+  @media (max-width: 768px) {
+    gap: 12px;
   }
 }
 
-.horizontal-list {
-  display: flex;
-  margin-bottom: 33px;
-  margin-left: 88px;
-  padding: 0px;
+.nav1 a {
+  color: $text-color;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: opacity 0.2s;
   
-  li, li a {
-    margin-right: 0;
-    color: $footer-bottom-text-color;
-    font-family: "Open Sans";
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  @media (max-width: 1024px) {
     font-size: 14px;
-    font-weight: 400;
-    line-height: 121%;
-    text-decoration: none;
   }
   
-  li:first-child {
-    margin-right: 290px;
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
+}
+
+.nav2 li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav2 a {
+  color: $text-color;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: pre-line;
+  transition: opacity 0.2s;
+  
+  &:hover {
+    opacity: 0.8;
   }
   
-  li:nth-child(2) {
-    margin-right: 185px;
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 11px;
   }
 }
 
 .f-button {
   padding: 16px 40px;
-  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif; 
+  font-weight: 400;
   color: $text-color;
   background-color: $button-bg;
-  border: none;          
-  border-radius: 10px;    
-  cursor: pointer;       
-  text-decoration: none; 
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: darken($button-bg, 10%);
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 14px 32px;
+    font-size: 13px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 200px;
+    margin-top: 8px;
+    padding: 16px;
+  }
 }
 
-@media (max-width: 1024px) {
-  .footer-ul{
-    padding: 0 40px; 
-    gap: 30px;
+.footer-bottom {
+  padding: 24px 88px;
+  
+  @media (max-width: 1024px) {
+    padding: 24px 40px;
   }
   
-  .nav1 a {
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 96px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  li, li a {
+    color: $footer-bottom-text-color;
+    font-family: "Open Sans", sans-serif;
     font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.footer-links-2 {
+  display: flex;
+  gap: 130px;
+  
+  @media (max-width: 1200px) {
+    gap: 100px;
   }
   
-  .nav2 a {
-    font-size: 12px;
+  @media (max-width: 1024px) {
+    gap: 60px;
   }
   
-  .horizontal-list {
-    gap: 6px;
-    
-    li:first-child {
-      margin-right: 60px;
-    }
-    
-    li:nth-child(2) {
-      margin-right: 50px;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
 @media (max-width: 768px) {
-  .footer {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .footer-ul {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "logo"
-      "nav1"
-      "nav2"
-      "button";
-    gap: 24px;
-    padding: 0 40px;
-  }
-  
-  .f-button {
-    justify-self: start;
-    margin-top: 10px;
-  }
-  
-  .footer-bottom {
-    margin-top: 20px;
-  }
-  
-  .horizontal-list {
+  .footer-links {
     flex-direction: column;
-    margin-left: 40px;
-    margin-bottom: 40px;
-    gap: 16px;
-    
-    li {
-      opacity: $footer-link-opacity;
-      margin-right: 0 !important;
-    }
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 </style>
