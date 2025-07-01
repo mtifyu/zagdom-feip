@@ -17,7 +17,7 @@
                   </a>
               </li>
           </ul>
-          <button class="f-button">Оставить заявку</button>
+          <button class="f-button" @click="modalOpen = true">Оставить заявку</button>
         </div>
         <div class="footer-bottom">
             <ul class="horizontal-list">
@@ -29,6 +29,7 @@
                 </li>
             </ul>
         </div>
+        <RequestModal v-model:open="modalOpen" />
     </div>
 </template>
 
@@ -38,11 +39,12 @@ import Email from '/icons/email.svg'
 import Point from '/icons/point.svg'
 import { mockContacts } from '~/mock/contacts'
 import { ref } from 'vue'
+import RequestModal from './RequestModal.vue'
 
 const { phone, email, address } = mockContacts
 
-// Заменяем <br /> на \n для корректного отображения переноса
 const formattedAddress = address.replace('<br />', '\n')
+const modalOpen = ref(false)
 
 const nav = ref([
   {
@@ -72,7 +74,7 @@ const nav2 = ref([
   {
     url: 'https://www.google.com/maps/dir/?api=1&destination=55.751244 ,37.618423',
     icon: Point,
-    label: formattedAddress, // Используем отформатированный адрес
+    label: formattedAddress,
   },
 ])
 const nav3 = ref([
@@ -161,7 +163,7 @@ ul li {
     line-height: 120%;
     text-align: left;
     text-decoration: none;
-    white-space: pre-line; /* Сохраняем переносы строк */
+    white-space: pre-line;
   }
 }
 

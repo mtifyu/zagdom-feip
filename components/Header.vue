@@ -2,6 +2,7 @@
 import { NuxtLink } from '#components'
 import Drawer from '~/components/Drawer.vue'
 import Modalka from '~/components/Modalka.vue' 
+import RequestModal from './RequestModal.vue'
 import { mockContacts } from '~/mock/contacts'
 import { ref } from 'vue'
 const { phone } = mockContacts
@@ -39,14 +40,14 @@ function closeModal() {
         <a :href="`tel:${phone.value}`" class="phone1">{{ phone.label }}</a>
       </div>
       <div class="header-button">
-        <button class="h-button" @click="openModal">Оставить заявку</button>
+        <button class="h-button" @click="modalOpen = true">Оставить заявку</button>
       </div>
     </div>
     <button @click="toggleDrawer" class="burger-btn">
       <img src="/pictures/Button.png" alt="burger menu">
     </button>
     <Drawer v-model:isOpen="drawerOpen" />
-    <Modalka :open="modalOpen" @update:open="closeModal" />
+    <RequestModal v-model:open="modalOpen" />
 </div>
 </template>
 
